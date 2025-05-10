@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable for 1st Year Odd Sem Sec C (Saturday to Wednesday)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            min-width: 800px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: 700;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .current-day {
+            background-color: #fffde7;
+            font-weight: bold;
+        }
+        .subject {
+            font-weight: 600;
+        }
+        .room {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+        }
+        @media (max-width: 768px) {
+            th, td {
+                padding: 8px 5px;
+                font-size: 0.9em;
+            }
+            .room {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Timetable for 1st Year Odd Semester Section C (Saturday to Wednesday)</h1>
+    
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Day/Time</th>
+                <th>8:00 AM - 8:50 AM</th>
+                <th>8:50 AM - 9:40 AM</th>
+                <th>9:40 AM - 10:30 AM</th>
+                <th>10:50 AM - 11:40 AM</th>
+                <th>11:40 AM - 12:30 PM</th>
+                <th>12:30 PM - 1:20 PM</th>
+                <th>1:20 PM - 2:30 PM</th>
+                <th>2:30 PM - 3:20 PM</th>
+                <th>3:20 PM - 4:10 PM</th>
+                <th>4:10 PM - 5:00 PM</th>
+            </tr>
+            <tr id="saturday">
+                <td>Saturday</td>
+                <td>-</td>
+                <td>
+                    <div class="subject">Math 1113</div>
+                    <div class="room">MHU 104</div>
+                </td>
+                <td>
+                    <div class="subject">EEE 1151</div>
+                    <div class="room">ABM 104</div>
+                </td>
+                <td colspan="3" style="background-color: #e8f5e9;">
+                    <div class="subject">HUM 1114 (English Lab)</div>
+                </td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr id="sunday">
+                <td>Sunday</td>
+                <td>-</td>
+                <td>
+                    <div class="subject">Math 1113</div>
+                    <div class="room">MSR 201</div>
+                </td>
+                <td>-</td>
+                <td colspan="2">
+                    <div class="subject">CSE 1101</div>
+                    <div class="room">201</div>
+                </td>
+                <td>
+                    <div class="subject">EEE 1151</div>
+                    <div class="room">201</div>
+                </td>
+                <td>-</td>
+                <td colspan="3" style="background-color: #e8f5e9;">
+                    <div class="subject">CHEM 1114 Lab</div>
+                </td>
+            </tr>
+            <tr id="monday">
+                <td>Monday</td>
+                <td>
+                    <div class="subject">HUM 1113</div>
+                    <div class="room">202</div>
+                </td>
+                <td>
+                    <div class="subject">CHEM 1113</div>
+                    <div class="room">202</div>
+                </td>
+                <td>
+                    <div class="subject">Math 1113</div>
+                    <div class="room">202</div>
+                </td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr id="tuesday">
+                <td>Tuesday</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>
+                    <div class="subject">HUM 1113</div>
+                    <div class="room">104</div>
+                </td>
+                <td>
+                    <div class="subject">EEE 1151</div>
+                    <div class="room">104</div>
+                </td>
+                <td>
+                    <div class="subject">CHEM 1113</div>
+                    <div class="room">104</div>
+                </td>
+                <td>-</td>
+                <td colspan="3" style="background-color: #e8f5e9;">
+                    <div class="subject">CSE 1100 (HW Lab)</div>
+                </td>
+            </tr>
+            <tr id="wednesday">
+                <td>Wednesday</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>
+                    <div class="subject">HUM 1113</div>
+                    <div class="room">203</div>
+                </td>
+                <td>
+                    <div class="subject">CHEM 1113</div>
+                    <div class="room">203</div>
+                </td>
+                <td>
+                    <div class="subject">CSE 1101</div>
+                    <div class="room">203</div>
+                </td>
+                <td>-</td>
+                <td colspan="3" style="background-color: #e8f5e9;">
+                    <div class="subject">EEE 1152 Lab</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // Highlight current day
+        const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        const today = new Date().getDay();
+        const currentDayRow = document.getElementById(days[today]);
+        
+        if (currentDayRow) {
+            currentDayRow.classList.add('current-day');
+        }
+
+        // Make table responsive
+        function adjustTable() {
+            const table = document.querySelector('table');
+            if (window.innerWidth < 768) {
+                table.style.fontSize = '0.9em';
+            } else {
+                table.style.fontSize = '1em';
+            }
+        }
+
+        window.addEventListener('resize', adjustTable);
+        adjustTable();
+    </script>
+</body>
+</html>
