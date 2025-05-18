@@ -5,17 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSE_C</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-    span{
-        
+    .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    span {
         background: #fff;
-        border-radius:2px;
-        padding:5px;
+        border-radius: 2px;
+        padding: 5px;
         box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-        margin-top:2px;
+        margin-top: 2px;
     }
-        body {
+    
+    
+    
+    /* Glassmorphic Navigation */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        z-index: 1000;
+        padding: 0.8rem 0;
+    }
+    
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        font-weight: 500;
+        color: #0f172a;
+        font-size: 1.1rem;
+    }
+    
+    .nav-links {
+        display: flex;
+        list-style: none;
+        
+        gap: 1.8rem;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-links a {
+        color: #475569;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 0.92rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    .nav-links a:hover {
+        color: #2563eb;
+    }
+    
+    .nav-links i {
+        font-size: 0.9rem;
+    }
+    
+    .hamburger {
+        display: none;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: #475569;
+        font-size: 1.2rem;
+    }
+    
+
+    
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            gap: 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .nav-links.active {
+            display: flex;
+        }
+        
+        .nav-links li {
+            width: 100%;
+            text-align: center;
+            padding: 0.6rem 0;
+        }
+        
+        .nav-links a {
+            justify-content: center;
+            padding: 0.4rem 0;
+        }
+        
+        .hamburger {
+            display: block;
+        }
+        
+        .container {
+            margin-top: 5rem;
+        }
+    }
+
+  
+    body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 20px;
@@ -111,18 +227,40 @@
                 font-size: 0.75rem;
             }
         }
+    /* ... (keep all your existing table styles) ... */
     </style>
 </head>
 <body>
+    <!-- Glassmorphic Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">CSE Section C</div>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+              
+                
+                
+                <li><a href="#"><i class="fas fa-book"></i>Study Materials</a></li>
+               <li><a href="#"><i class="fas fa-globe"></i>Profiles</a></li>
+                
+                
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+
     <div class="container">
-        <h2>1st Year Odd Sem - Section C&nbsp;</h2>
+        <h2>Class Routine&nbsp;</h2>
         
+        <span style="color:red">* Applicable from 17-05-2025 (SAT) </span><br><br>
+        <marquee style="color:blue">***You can see the latest updated routine of Section C***</marquee>
+        <br>
+        <br>
         
-            <span style="color:red">* Applicable from 17-05-2025 (SAT) </span><br><br><marquee style="color:blue">***You can see the latest updated routine of Section C***</marquee>
-            <br>
-       <br>
-        
-        <div class="table-container">
+       <div class="table-container">
             <table>
                 <tr class="period-row">
                     <th>Day/Period</th>
@@ -270,6 +408,25 @@
     </div>
 
     <script>
+        // Toggle mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close menu when link is clicked (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
         // Highlight current day
         const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
         const today = new Date().getDay();
@@ -292,23 +449,5 @@
         window.addEventListener('resize', adjustTable);
         adjustTable();
     </script>
-
-
-    <!-- <h3 class="text-2xl font-semibold text-gray-800 mb-4">Acronym List</h3>
-<ul class="list-disc pl-6 space-y-2 text-gray-700">
-  <li><strong class="text-indigo-600">MAA</strong> - Prof. Dr. Md. Ashraful Alam</li>
-  <li><strong class="text-indigo-600">JH</strong> - Dr. Jewel Hossen</li>
-  <li><strong class="text-indigo-600">SAS</strong> - Md. Samiol Alam Shishir</li>
-  <li><strong class="text-indigo-600">MFS</strong> - Mst. Fahmida Sultana</li>
-  <li><strong class="text-indigo-600">MSR</strong> - Dr. Md Saifur Rahman</li>
-  <li><strong class="text-indigo-600">MHU</strong> - Prof. Dr. Md. Helal Uddin Molla</li>
-  <li><strong class="text-indigo-600">MMI</strong> - Md Mayenul Islam</li>
-  <li><strong class="text-indigo-600">MNA</strong> - Md. Nuhi-Alamin</li>
-  <li><strong class="text-indigo-600">NOS</strong> - Md. Nasif Osman Khansur</li>
-  <li><strong class="text-indigo-600">SA</strong> - Shyla Afroge</li>
-  <li><strong class="text-indigo-600">SUZ</strong> - Prof. Dr. Md. Shahid Uz Zaman</li>
-  <li><strong class="text-indigo-600">NIM</strong> - Prof. Dr. Md. Nazrul Islam Mondal</li>
-</ul>-->
 </body>
             </html>
-                
