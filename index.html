@@ -227,6 +227,12 @@
                 font-size: 0.75rem;
             }
         }
+        
+        
+        #t2 td{
+        text-align:left;
+        padding:20px;
+        }
     /* ... (keep all your existing table styles) ... */
     </style>
 </head>
@@ -406,7 +412,66 @@
             </table>
         </div>
     </div>
+    
+    
+    
+      <h2>CT routine</h2>
+      <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+    
+    <div style="display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 3px; font-size: 18px;">Today: &nbsp;
+        <span id="currentDate" style="color:red"></span>
+    </div>
+</div>
 
+<script>
+    const today = new Date();
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    
+    document.getElementById('currentDate').textContent =
+        `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')} (${days[today.getDay()]})`;
+</script>
+<div class="table-container">
+  <table border="1" cellspacing="0" cellpadding="8" id="t2">
+  <thead>
+    <tr class="period-row">
+      <th>Day</th>
+      <th>Date</th>
+      <th>Subject</th>
+      <th>Syllabus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Wednesday</td>
+      <td>18/06</td>
+      <td>Chemistry</td>
+      <td>"Solution" Sheet FULL</td>
+    </tr>
+    <tr>
+      <td>Saturday</td>
+      <td>21/06</td>
+      <td>Math</td>
+      <td>Helal Sir Differentiation Sheet 1-6</td>
+    </tr>
+    <tr>
+      <td>Sunday</td>
+      <td>22/06</td>
+      <td>CSE</td>
+      <td>
+-> C basics: Data Types, Operators (unary and binary) and Expressions (numerical and logical)<br>
+-> Conditional Statements: if-else , switch statements and conditional operator (?:)<br>
+-> Programs related to the above topics
+Thanks</td>
+    </tr>
+    <tr>
+      <td>Tuesday</td>
+      <td>24/06</td>
+      <td>EEE</td>
+      <td>Mesh & Nodal Analysis</td>
+    </tr>
+  </tbody>
+</table>
+</div>
     <script>
         // Toggle mobile menu
         const hamburger = document.getElementById('hamburger');
@@ -450,4 +515,5 @@
         adjustTable();
     </script>
 </body>
-            </html>
+    </html>
+    
