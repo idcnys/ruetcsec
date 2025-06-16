@@ -427,16 +427,16 @@
     <div style="display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 3px; font-size: 18px;">Today: &nbsp;
         <span id="currentDate" style="color:red"></span>
     </div>
-</div>
-      </center>
-
-<script>
+</div><script>
     const today = new Date();
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     
     document.getElementById('currentDate').textContent =
         `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')} (${days[today.getDay()]})`;
 </script>
+      </center>
+
+
 <div class="table-container">
   <table border="1" cellspacing="0" cellpadding="8" id="t2">
   <thead>
