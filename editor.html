@@ -176,7 +176,7 @@
                 database.ref('routines/' + routineId).update(routineData)
                     .then(() => {
                         alert('CT updated successfully!');
-                        window.location.href = 'viewct.html';
+                        window.location.href = '/';
                     })
                     .catch(error => {
                         console.error('Error updating CT:', error);
@@ -201,7 +201,7 @@
             database.ref('routines/' + routineId).remove()
                 .then(() => {
                     alert('CT deleted successfully!');
-                    window.location.href = 'viewct.html';
+                    window.location.href = '/';
                 })
                 .catch(error => {
                     console.error('Error deleting CT:', error);
