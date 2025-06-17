@@ -6,130 +6,241 @@
     <title>CT Routine</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --light-bg: #f5f5f5;
+            --white: #ffffff;
+            --border-color: #e0e0e0;
+            --text-color: #333333;
+            --text-light: #777777;
+            --warning-bg: #fff0e0;
+            --upcoming-bg: #f0f7ff;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--light-bg);
+            color: var(--text-color);
             line-height: 1.6;
-            padding: 20px;
+            padding: 16px;
+            min-height: 100vh;
+        }
+        
+        .container {
             max-width: 1000px;
             margin: 0 auto;
+            width: 100%;
         }
+        
         .header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
         }
+        
         h1 {
             font-weight: 700;
-            color: #222;
+            color: var(--primary-color);
             margin: 0;
-            font-size: 24px;
+            font-size: clamp(1.5rem, 5vw, 1.8rem);
         }
+        
         .today {
-            font-size: 16px;
-            color: #555;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            color: var(--text-light);
         }
+        
+        .routine-container {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
         .routine-table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
+            table-layout: fixed;
         }
+        
         .routine-table th {
-            background-color: #f0f0f0;
-            color: #444;
+            background-color: #f8f9fa;
+            color: var(--primary-color);
             font-weight: 600;
-            padding: 12px 15px;
+            padding: 12px 8px;
             text-align: left;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
         }
+        
         .routine-table td {
-            padding: 12px 15px;
-            border-top: 1px solid #eee;
+            padding: 12px 8px;
+            border-top: 1px solid var(--border-color);
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
+            word-break: break-word;
         }
+        
         .routine-table tr:first-child td {
             border-top: none;
         }
+        
         .upcoming {
-            background-color: #f0f7ff;
+            background-color: var(--upcoming-bg);
         }
+        
         .upcoming-soon {
-            background-color: #fff0e0;
+            background-color: var(--warning-bg);
         }
+        
         .days-left {
-            font-size: 12px;
-            color: #666;
-            margin-left: 6px;
+            font-size: clamp(0.7rem, 3vw, 0.75rem);
+            color: var(--text-light);
+            margin-left: 4px;
+            display: inline-block;
         }
+        
         .no-ct {
-            padding: 40px;
+            padding: 40px 20px;
             text-align: center;
-            color: #777;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            color: var(--text-light);
+            background: var(--white);
         }
+        
         .loader {
             display: flex;
             justify-content: center;
-            padding: 30px;
+            padding: 40px;
         }
+        
         .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
+            width: 36px;
+            height: 36px;
+            border: 4px solid rgba(0,0,0,0.1);
+            border-top: 4px solid var(--secondary-color);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
+        
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        @media (max-width: 600px) {
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 640px) {
             .routine-table {
-                font-size: 14px;
+                display: block;
             }
-            .routine-table th, 
+            
+            .routine-table thead {
+                display: none;
+            }
+            
+            .routine-table tbody, 
+            .routine-table tr, 
             .routine-table td {
-                padding: 8px 10px;
+                display: block;
+                width: 100%;
+            }
+            
+            .routine-table tr {
+                padding: 12px 8px;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .routine-table td {
+                padding: 4px 0;
+                border-top: none;
+                display: flex;
+            }
+            
+            .routine-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                width: 100px;
+                min-width: 100px;
+                color: var(--primary-color);
+            }
+            
+            .routine-table tr:first-child {
+                border-top: none;
+            }
+            
+            .upcoming, 
+            .upcoming-soon {
+                border-left: 4px solid;
+            }
+            
+            .upcoming {
+                border-left-color: var(--secondary-color);
+            }
+            
+            .upcoming-soon {
+                border-left-color: #e67e22;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+                font-size: 12pt;
+            }
+            
+            .container {
+                max-width: 100%;
+            }
+            
+            .routine-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .routine-table {
+                border: 1px solid #ddd;
+            }
+            
+            .no-ct, .loader {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>CT Routine</h1>
-        <div class="today" id="todayDate"></div>
-    </div>
-
-    <div id="routineContainer">
-        <div class="loader" id="loader">
-            <div class="spinner"></div>
+    <div class="container">
+        <div class="header">
+            <h1>CT Routine</h1>
+            <div class="today" id="todayDate"></div>
         </div>
-        <table class="routine-table" id="routineTable" style="display: none;">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Subject</th>
-                    <th>Teacher</th>
-                    <th>Syllabus</th>
-                </tr>
-            </thead>
-            <tbody id="routineTableBody">
-                <!-- Data will be loaded here -->
-            </tbody>
-        </table>
-        <div id="noCTMessage" class="no-ct" style="display: none;">
-            No upcoming CTs scheduled.
+
+        <div class="routine-container" id="routineContainer">
+            <div class="loader" id="loader">
+                <div class="spinner"></div>
+            </div>
+            <table class="routine-table" id="routineTable" style="display: none;">
+                <thead>
+                    <tr>
+                        <th style="width: 25%">Date</th>
+                        <th style="width: 20%">Subject</th>
+                        <th style="width: 20%">Teacher</th>
+                        <th style="width: 35%">Syllabus</th>
+                    </tr>
+                </thead>
+                <tbody id="routineTableBody">
+                    <!-- Data will be loaded here -->
+                </tbody>
+            </table>
+            <div id="noCTMessage" class="no-ct" style="display: none;">
+                No upcoming CTs scheduled.
+            </div>
         </div>
     </div>
 
@@ -213,14 +324,25 @@
                     const row = document.createElement('tr');
                     if (rowClass) row.className = rowClass;
                     
+                    // Format days left text
+                    let daysLeftText = '';
+                    if (daysLeft === 0) {
+                        daysLeftText = 'Today';
+                    } else if (daysLeft === 1) {
+                        daysLeftText = '1 day left';
+                    } else {
+                        daysLeftText = `${daysLeft} days left`;
+                    }
+                    
+                    // Create cells with data-label attributes for mobile
                     row.innerHTML = `
-                        <td>
+                        <td data-label="Date">
                             ${formatDate(routine.date)}
-                            <span class="days-left">(${daysLeft === 0 ? 'Today' : daysLeft + ' ' + (daysLeft === 1 ? 'day' : 'days') + ' left'})</span>
+                            <span class="days-left">(${daysLeftText})</span>
                         </td>
-                        <td>${routine.subject}</td>
-                        <td>${routine.teacher}</td>
-                        <td>${routine.syllabus}</td>
+                        <td data-label="Subject">${routine.subject || '-'}</td>
+                        <td data-label="Teacher">${routine.teacher || '-'}</td>
+                        <td data-label="Syllabus">${routine.syllabus || '-'}</td>
                     `;
                     
                     routineTableBody.appendChild(row);
@@ -246,7 +368,7 @@
 
         // Format date for display
         function formatDate(dateString) {
-            if (!dateString) return '';
+            if (!dateString) return '-';
             const date = new Date(dateString);
             return date.toLocaleDateString('en-US', { 
                 month: 'short', 
