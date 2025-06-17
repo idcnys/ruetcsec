@@ -187,7 +187,7 @@
                 database.ref('routines').push(routineData)
                     .then(() => {
                         alert('CT added successfully!');
-                        window.location.href = '';
+                        window.location.href = '/ct';
                     })
                     .catch(error => {
                         console.error('Error adding CT:', error);
