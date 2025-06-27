@@ -176,7 +176,7 @@
                 database.ref('routines/' + routineId).update(routineData)
                     .then(() => {
                         alert('CT updated successfully!');
-                        window.location.href = '/ct';
+                        window.location.href = '/secAct';
                     })
                     .catch(error => {
                         console.error('Error updating CT:', error);
@@ -187,7 +187,7 @@
                 database.ref('routines').push(routineData)
                     .then(() => {
                         alert('CT added successfully!');
-                        window.location.href = '/ct';
+                        window.location.href = '/secAct';
                     })
                     .catch(error => {
                         console.error('Error adding CT:', error);
@@ -201,7 +201,7 @@
             database.ref('routines/' + routineId).remove()
                 .then(() => {
                     alert('CT deleted successfully!');
-                    window.location.href = '/ct';
+                    window.location.href = '/secAct';
                 })
                 .catch(error => {
                     console.error('Error deleting CT:', error);
